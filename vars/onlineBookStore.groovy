@@ -28,7 +28,7 @@ def call(repoUrl,dockerImageName){
             stage("Build Docker Image") {
                 steps {
                     script {
-                        sh "docker build -t ${dockerImageName} ."
+                        sh "docker build -t ${dockerImageName}:${BUILD_NUMBER} ."
                     }
                 }
             }
@@ -36,7 +36,7 @@ def call(repoUrl,dockerImageName){
                 steps {
                     script {
                         sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
-                        sh "docker push ${bprasad701/cloud}:latest"
+                        sh "docker push ${dockerImageName}:${BUILD_NUMBER}"
                     }
                 }
             }
