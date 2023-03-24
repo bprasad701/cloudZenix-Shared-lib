@@ -36,7 +36,7 @@ def call(repoUrl,dockerImageName){
                 steps {
                     script {
                         sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
-                        sh "docker push ${bprasad701/cloud}"
+                        sh "docker push ${bprasad701/cloud}:latest"
                     }
                 }
             }
