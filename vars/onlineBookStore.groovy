@@ -28,15 +28,15 @@ def call(repoUrl,dockerImageName){
             stage("Build Docker Image") {
                 steps {
                     script {
-                        sh 'docker build -t bprasad701/cloud .'
+                        sh "docker build -t ${dockerImageName} ."
                     }
                 }
             }
             stage("Push image to Dockerhub") {
                 steps {
                     script {
-                        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                        sh 'docker push bprasad701/cloud'
+                        sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
+                        sh "docker push ${bprasad701/cloud}"
                     }
                 }
             }
